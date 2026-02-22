@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<script>
+  var state_moving = false;  // ensures you can't spam click a button too many times.
+  var chapnames = {
+    "chapter1": "onikakushi",
+    "chapter2": "watanagashi",
+    "chapter3": "tatarigoroshi",
+    "chapter4": "himatsubushi",
+    "chapter5": "meakashi",
+    "chapter6": "onikakushi",
+    "chapter7": "onikakushi",
+    "chapter8": "onikakushi"
+  };
+
+  function click_Start()
+  {
+    if (state_moving)
+      return;
+    state_moving = true;
+
+    const audio = new Audio('creepyLaugh.wav');
+    audio.addEventListener('ended', function() {
+      // jump to textlog.html
+      console.log("Audio played!");
+
+      // read in value from combobox and jump
+      var selected = document.getElementById("chapter-select").value;
+      selected = chapnames[selected];
+      let jumpto = `readchapter.html?chapter=${selected}`;
+      console.log("Moving to " + jumpto);
+
+      window.location.href = jumpto;
+      state_moving = false;
+    });
+    audio.play();
+  }
+
+  function click_About()
+  {
+    if (state_moving)
+      return;
+    state_moving = true;
+
+    // do movement here
+    state_moving = false;
+  }
+</script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Text Frontpage</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="overlay">
+    <div class="redbars top-bar"></div>
+    <div class="redbars left-bar"></div>
+    <div class="redbars right-bar"></div>
+    <div class="title-textregion">
+      <div class="title-text">
+        Higurashi No Naku Koro Ni
+      </div>
+      <div class="subtitle-text">
+        Higurashi: When They Cry - VN Reference
+      </div>
+    </div>
+    <div class="bottom-buttons">
+      <div class="btn" onclick="click_Start()" >Start</div>
+      <div class="btn">About</div>
+    </div>
+    
+    <div class="middleregion">
+      <div class="introtext">
+        This chapter is an alternate take on Onikakushi. <br>
+        It can be read after completion of Chapter 3: Tatarigoroshi. <br>
+        It can be read after completion of Chapter 3: Tatarigoroshi. <br>
+      </div>
+
+      <div class="selector">
+        <label for="chapter-select">Select Chapter:</label>
+        <select id="chapter-select">
+          <option value="chapter1">Onikakushi - Chapter 1</option>
+          <option value="chapter2">Watanagashi - Chapter 2</option>
+          <option value="chapter3">Tatarigoroshi - Chapter 3</option>
+          <option value="chapter4">Himatsubushi - Chapter 4</option>
+          <option value="chapter5">Meakashi - Chapter 5</option>
+          <option value="chapter6">Tsumihoroboshi - Chapter 6</option>
+          <option value="chapter7">Minagoroshi - Chapter 7</option>
+          <option value="chapter8">Matsuribayashi - Chapter 8</option>
+        </select>
+      </div>
+    </div>
+    
+  </div>
+</body>
+</html>

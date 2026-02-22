@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visual Novel Log</title>
+  <script src="script_readchapter.js" defer></script>
+  <link rel="stylesheet" href="styles_readchapter.css">
+</head>
+<body>
+  <div class="background"></div>
+
+  <div class="textlog">
+    <div class="title-bar black_textshadow_solid">
+      TEXTLOG  /  文章履歴
+        <input type="file" id="file-input"/> <!-- temporary, remove later-->
+    </div>
+
+    <div id="textlog_dialoguecontainer" class="dialogue-window black_textshadow_light">
+      <!-- <p><span class="speaker mion">Mion</span><br>"Wait... then you really ran away?! ...Oooh... great job..."</p>
+      <p><span class="speaker shion">Mion</span><br>"The security wasn’t tight enough to keep me locked up in there! Ahaha!"</p>
+      <p><span class="speaker mion">Mion</span><br>"...Maybe the school should be grateful you escaped quietly... If you were serious, it'd be easy for you to blow up the whole building to make your escape."</p>
+      <p><span class="speaker shion">Shion</span><br>"Well, I couldn't have done that, but I might have set it on fire. Ahahahahaha!"</p>
+      <p>Kasai smiled at us in amazement, his face a blend of amusement and exasperation.</p>  test lines -->
+      <div id="loading_icon_container">
+        Loading...
+        <div class="loading_icon"></div>
+      </div>
+    </div>
+
+    <button class="close-btn white_textshadow_light" onclick="clearParagraph('textlog_dialoguecontainer')"><span>SETTINGS</span></button>
+  </div>
+</body>
+</html>

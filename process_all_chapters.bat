@@ -1,0 +1,1 @@
+py ./process_bulk.py  :onikakushi ./onikakushi  :watanagashi ./watanagashi  :tatarigoroshi ./tatarigoroshi  :himatsubushi ./himatsubushi  :meakashi ./meakashi  :tsumihoroboshi ./tsumihoroboshi  :minagoroshi ./minagoroshi  :matsuribayashi ./matsuribayashi
