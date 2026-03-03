@@ -25,8 +25,7 @@ function lookup_SpeakerColors(speakername) {
     return "#f5e6d3";        // side chars 
 }
 
-function parseAndInsertParagraph(textstr)
-{
+function parseAndInsertParagraph(textstr) {
   console.log(textstr)
   contents = textstr.split('\n');
 
@@ -60,14 +59,14 @@ function readFile(file) {  // this is probably a useless function :L
   reader.readAsText(file);    // start reading  the file
 }
 
-function readBlob(blob) {
+async function readBlob(blob) {
   if (!blob) {
     return;
   }
 
   clearParagraph('textlog_dialoguecontainer');
-  
-  var textstr = blob.text();   // this will probably cause a problem cause this returns a promise.
+
+  var textstr = await blob.text();   // this will probably cause a problem cause this returns a promise.
 
   parseAndInsertParagraph(textstr);
 }
@@ -96,11 +95,11 @@ function makeParagraph(prevPara, speaker, text, spacing) {
   }
   if (spacing != '')
     console.log("wow! spacing exists!!!");
-  
-//  text = preprocess_scripttext(text);        // TODO: we wanna manually parse all tags and implement the effects ourselves (the script contains wierd tags that dont exist in html like <size>, etc.)
+
+  //  text = preprocess_scripttext(text);        // TODO: we wanna manually parse all tags and implement the effects ourselves (the script contains wierd tags that dont exist in html like <size>, etc.)
 
   //p.appendChild(document.createTextNode(text + ' ' + spacing));  // safe but this ended up escaping the html tags in the script (ex: tsumihoroboshi)
-  p.innerHTML += text + ' ' + spacing;        
+  p.innerHTML += text + ' ' + spacing;
 
   return p;
 }
@@ -274,22 +273,39 @@ function main() {
   const chapterName = params.get("chapter");
 
   // if no args,
-  if (!chapterName)
-  {
+  if (!chapterName) {
     document.getElementById('loading_icon_container').innerText = "No chapter to load!";
     throw new Error("No chapter to load!");
   }
-  
+
   // start progress bar
   let pb = new Progress(0, 0, 100, { parent: ".loading_icon" });
-  
-  downloadWithProgressXHR(`../${chapterName}.json`, progress => {
+
+  downloadWithProgressXHR(`json/${chapterName}.json`, progress => {
     console.log(`Downloading file... Progress: ${(progress * 100).toFixed(2)}%`);
     pb.setProgress(progress * 100);
   }).then(blob => {
     readBlob(blob);
   });
 }
+
+
+function openSettings() {
+  const overlay = document.getElementById('settings-overlay');
+  overlay.classList.remove('hidden');
+}
+
+function closeSettings() {
+  const overlay = document.getElementById('settings-overlay');
+  overlay.classList.add('hidden');
+}
+
+// Listen for messages from the settings iframe
+window.addEventListener('message', (event) => {
+  if (event.data === 'closeSettings') {
+    closeSettings();
+  }
+});
 
 
 main()

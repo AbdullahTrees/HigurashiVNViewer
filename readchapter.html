@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Visual Novel Log</title>
   <script src="script_readchapter.js" defer></script>
   <link rel="stylesheet" href="styles_readchapter.css">
 </head>
+
 <body>
   <div class="background"></div>
 
   <div class="textlog">
     <div class="title-bar black_textshadow_solid">
-      TEXTLOG  /  文章履歴
-        <input type="file" id="file-input"/> <!-- temporary, remove later-->
+      TEXTLOG / 文章履歴
+      <input type="file" id="file-input" /> <!-- temporary, remove later-->
     </div>
 
     <div id="textlog_dialoguecontainer" class="dialogue-window black_textshadow_light">
@@ -27,7 +29,12 @@
       </div>
     </div>
 
-    <button class="close-btn white_textshadow_light" onclick="clearParagraph('textlog_dialoguecontainer')"><span>SETTINGS</span></button>
+    <button class="close-btn white_textshadow_light" onclick="openSettings()"><span>SETTINGS</span></button>
+  </div>
+
+  <div id="settings-overlay" class="settings-overlay hidden">
+    <iframe src="settings.html" title="Settings Menu"></iframe>
   </div>
 </body>
+
 </html>

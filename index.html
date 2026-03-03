@@ -12,14 +12,13 @@
     "chapter8": "onikakushi"
   };
 
-  function click_Start()
-  {
+  function click_Start() {
     if (state_moving)
       return;
     state_moving = true;
 
-    const audio = new Audio('creepyLaugh.wav');
-    audio.addEventListener('ended', function() {
+    const audio = new Audio('assets/creepyLaugh.wav');
+    audio.addEventListener('ended', function () {
       // jump to textlog.html
       console.log("Audio played!");
 
@@ -35,8 +34,7 @@
     audio.play();
   }
 
-  function click_About()
-  {
+  function click_About() {
     if (state_moving)
       return;
     state_moving = true;
@@ -46,12 +44,14 @@
   }
 </script>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Text Frontpage</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="overlay">
     <div class="redbars top-bar"></div>
@@ -66,10 +66,10 @@
       </div>
     </div>
     <div class="bottom-buttons">
-      <div class="btn" onclick="click_Start()" >Start</div>
+      <div class="btn" onclick="click_Start()">Start</div>
       <div class="btn">About</div>
     </div>
-    
+
     <div class="middleregion">
       <div class="introtext">
         This chapter is an alternate take on Onikakushi. <br>
@@ -91,7 +91,8 @@
         </select>
       </div>
     </div>
-    
+
   </div>
 </body>
+
 </html>
